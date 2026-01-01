@@ -1,0 +1,49 @@
+# Market configurations for Paradex Delta Bot
+
+markets:
+  - symbol: BTC-USD-PERP
+    enabled: true
+    max_position_size: 50000
+    default_leverage: 2.0
+
+  - symbol: ETH-USD-PERP
+    enabled: true
+    max_position_size: 30000
+    default_leverage: 2.0
+
+  - symbol: SOL-USD-PERP
+    enabled: true
+    max_position_size: 10000
+    default_leverage: 2.0
+
+  - symbol: ARB-USD-PERP
+    enabled: false
+    max_position_size: 5000
+    default_leverage: 1.0
+
+# Rate limit configuration
+rate_limits:
+  orders_per_second: 800
+  requests_per_minute_ip: 1500
+  ws_connections_per_second: 20
+  ws_connections_per_minute: 600
+
+# Rebalancing defaults
+rebalancing:
+  threshold_pct: 5.0
+  min_interval_seconds: 300
+  max_slippage_pct: 0.5
+
+# Anti-detection defaults
+anti_detection:
+  size_variance: 0.15
+  timing_variance: 0.30
+  min_delay_seconds: 0.5
+  max_delay_seconds: 5.0
+  skip_probability: 0.1
+
+# XP optimization defaults
+xp_optimization:
+  min_position_hours: 24
+  optimal_position_hours: 48
+  target_daily_volume: 100000
