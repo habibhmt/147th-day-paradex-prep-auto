@@ -1,14 +1,16 @@
 """Factory for creating Paradex API clients."""
 
 import logging
-from typing import Dict, Optional
+from typing import Dict, Literal, Optional
 
 from paradex_py import Paradex, ParadexSubkey
-from paradex_py.environment import Environment
 
 from src.security.keychain import AccountCredentials
 
 logger = logging.getLogger(__name__)
+
+# Environment type matches paradex-py SDK
+ParadexEnv = Literal["prod", "testnet", "nightly"]
 
 
 class ParadexClientFactory:
@@ -27,10 +29,11 @@ class ParadexClientFactory:
         Args:
             environment: 'mainnet' or 'testnet'
         """
-        self.environment = (
-            Environment.MAINNET
+        # Map 'mainnet' to 'prod' as per SDK requirement
+        self.environment: ParadexEnv = (
+            "prod"
             if environment == "mainnet"
-            else Environment.TESTNET
+            else "testnet"
         )
         self._clients: Dict[str, ParadexSubkey] = {}
         logger.info(f"Initialized ParadexClientFactory for {environment}")
@@ -166,10 +169,11 @@ class ParadexL1ClientFactory:
 
     def __init__(self, environment: str = "mainnet"):
         """Initialize L1 client factory."""
-        self.environment = (
-            Environment.MAINNET
+        # Map 'mainnet' to 'prod' as per SDK requirement
+        self.environment: ParadexEnv = (
+            "prod"
             if environment == "mainnet"
-            else Environment.TESTNET
+            else "testnet"
         )
         self._clients: Dict[str, Paradex] = {}
 

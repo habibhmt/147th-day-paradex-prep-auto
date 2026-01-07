@@ -1,6 +1,6 @@
 [project]
 name = "paradex-delta-bot"
-version = "0.1.0"
+version = "0.1.1"
 description = "Delta-neutral trading bot for Paradex DEX - XP farming with multi-account support"
 readme = "README.md"
 requires-python = ">=3.10,<3.13"
